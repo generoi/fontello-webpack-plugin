@@ -32,7 +32,7 @@
     "https-proxy-agent": "^2.1.1",
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
-    "unzip": "^0.1.11",
+    "unzipper": "^0.10.5",
     "webpack-sources": "^0.2.0"
   },
   "peerDependencies": {

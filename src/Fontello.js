@@ -1,7 +1,7 @@
 const _ = require("lodash")
 const path = require("path")
 const stream = require("stream")
-const unzip = require("unzip")
+const unzip = require("unzipper")
 const fetch = require("node-fetch")
 const FormData = require("form-data")
 const { RawSource } = require("webpack-sources")
