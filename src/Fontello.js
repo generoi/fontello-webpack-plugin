@@ -8,7 +8,7 @@ const { RawSource } = require("webpack-sources")
 const HttpsProxyAgent = require('https-proxy-agent')
 
 const defaults = {
-	host: "http://fontello.com",
+	host: "https://fontello.com",
 	proxy: null
 }
 
