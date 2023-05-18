@@ -26,7 +26,7 @@ class FontelloPlugin {
 		const { output } = this.options
 		const chunk = this.chunk
 		const fontello = new Fontello(this.options)
-		compiler.plugin("make", (compilation, cb) => {
+    compiler.hooks.make.tapAsync("FontellloPlugin", (compilation, cb) => {
 			const cssFile = compilation.getPath(output.css, { chunk })
 			const fontFile = ext => (
 				compilation.getPath(output.font, { chunk })
@@ -48,12 +48,12 @@ class FontelloPlugin {
 					}
 				})
 				.then(() => cb())
-			compilation.plugin("html-webpack-plugin-before-html-generation", (data, cb) => {
-				console.log(getPublicPath(compilation))
-				data.assets.css.push(getPublicPath(compilation) + cssFile)
-				cb(null, data)
-			})
-			compilation.plugin("additional-assets", cb => {
+   //    compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync("FontellloPlugin", (data, cb) => {
+			// 	console.log(getPublicPath(compilation))
+			// 	data.assets.css.push(getPublicPath(compilation) + cssFile)
+			// 	cb(null, data)
+			// })
+      compilation.hooks.additionalAssets.tapAsync("FontellloPlugin", (cb) => {
 				compilation.chunks.push(chunk)
 				compilation.namedChunks[this.options.name] = chunk
 				cb()
